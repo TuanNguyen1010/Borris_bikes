@@ -32,15 +32,13 @@ describe DockingStation do
       ds = DockingStation.new
       bike = Bike.new
       ds.dock(bike)
-      expect(ds.bike).to eq(bike)
+      expect(ds).to respond_to(:bikes)
     end 
 
-    it 'raises an error if there is already bike docked' do
+    it 'raises an error if there docking station is full' do
       ds = DockingStation.new
-      bike = Bike.new
-      bike1 = Bike.new
-      ds.dock(bike)
-      expect{ ds.dock(bike1) }.to raise_error('docking station is full')
+      20.times {ds.dock(Bike.new)}
+      expect{ ds.dock(Bike.new) }.to raise_error('docking station is full')
     end 
   end 
 end 
