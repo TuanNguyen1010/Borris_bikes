@@ -1,9 +1,7 @@
-
-
 class Bike
 
   def working?
-    true if @condition == 'working'
+    true unless broken?
   end 
   
   def report_broken
