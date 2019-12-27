@@ -37,7 +37,7 @@ describe DockingStation do
 
     it 'raises an error if there docking station is full' do
       ds = DockingStation.new
-      20.times {ds.dock(Bike.new)}
+      DockingStation::DEFAULT_CAPACITY.times {ds.dock(Bike.new)}
       expect{ ds.dock(Bike.new) }.to raise_error('docking station is full')
     end 
   end 
